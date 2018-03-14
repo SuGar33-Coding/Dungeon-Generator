@@ -1,28 +1,39 @@
 package dungeonGenerator;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 
-public class IntroWindow extends JFrame{  //First window of the application that requests dungeon information.
+public class IntroWindow extends JPanel{  //First window of the application that requests dungeon information.
 
-    JPanel panel;
-    JFrame frame;
+    private JPanel panel;
+    private JRadioButton small, medium, large;
+    private JLabel partySizeL, mapSizeL;
+    private JTextField partySize, mapSize;
+    private int roomNumber;
 
     IntroWindow() {
-        frame = new JFrame();
         panel = new JPanel(); //Set Layout to Box?
-        frame.setPreferredSize(new Dimension(500,500));
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        JLabel partySizeL = new JLabel("Party Size: ");
-        JTextField partySize = new JTextField(30);
+        partySizeL = new JLabel("Party Size: "); // Elements that receive input from the user on the size of the party.
+        partySize = new JTextField(5);
+
+
+        mapSizeL = new JLabel("Dungeon Size: ");  // Radio buttons to receive the desired size of the dungeon
+        mapSize = new JTextField(5);
 
 
         partySizeL.setVisible(true);
+        panel.setBackground(Color.WHITE);
         panel.add(partySizeL);
         panel.add(partySize);
+        panel.add(mapSizeL);
+        panel.add(mapSize);
         panel.setVisible(true);
-        frame.add(panel);
-        frame.pack();
-        frame.setVisible(true);
+    }
+
+    public JPanel get_IntroPanel() {
+        return panel;
     }
 }
