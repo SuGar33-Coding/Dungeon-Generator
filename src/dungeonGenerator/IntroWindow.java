@@ -14,6 +14,8 @@ public class IntroWindow extends JPanel{  //First window of the application that
     private int roomNumber;
     private JButton nextButton;
 
+    private JLabel error;
+
     IntroWindow() {
         panel = new JPanel(); //Set Layout to Box?
 
@@ -35,6 +37,11 @@ public class IntroWindow extends JPanel{  //First window of the application that
         panel.add(mapSize);
         panel.add(nextButton);
         panel.setVisible(true);
+
+        error = new JLabel("Invalid entries!");
+        panel.add(error);
+        error.setVisible(false);
+
     }
 
     public JPanel get_IntroPanel() {
@@ -48,13 +55,18 @@ public class IntroWindow extends JPanel{  //First window of the application that
     private class NextListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            String size = mapSize.getText();
-            if (size.equals("")) {
+            int mSize = Integer.parseInt(mapSize.getText());
+            int pSize = Integer.parseInt(partySize.getText());
+            /*
+            TODO: Figure out how to detect if fields are empty when clicking next
+             */
+            if (mSize <= 0 || pSize <= 0) {
                 roomNumber = 0; // Display error message or throw exception
+                error.setVisible(true);
             } else {
-                roomNumber = Integer.parseInt(size);
+                roomNumber = mSize;
+                mapSizeL.setText("Dungeon Size: " + roomNumber);
             }
-            mapSizeL.setText("Dungeon Size: " + roomNumber);
         }
     }
 }
