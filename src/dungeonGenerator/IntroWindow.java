@@ -38,10 +38,6 @@ public class IntroWindow extends JPanel{  //First window of the application that
         panel.add(nextButton);
         panel.setVisible(true);
 
-        error = new JLabel("Invalid entries!");
-        panel.add(error);
-        error.setVisible(false);
-
     }
 
     public JPanel get_IntroPanel() {
@@ -57,12 +53,13 @@ public class IntroWindow extends JPanel{  //First window of the application that
         public void actionPerformed(ActionEvent e) {
             int mSize = Integer.parseInt(mapSize.getText());
             int pSize = Integer.parseInt(partySize.getText());
+
             /*
             TODO: Figure out how to detect if fields are empty when clicking next
              */
             if (mSize <= 0 || pSize <= 0) {
                 roomNumber = 0; // Display error message or throw exception
-                error.setVisible(true);
+                new errorWindow("Invalid entry!");
             } else {
                 roomNumber = mSize;
                 mapSizeL.setText("Dungeon Size: " + roomNumber);
