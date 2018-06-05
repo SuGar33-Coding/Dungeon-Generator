@@ -1,20 +1,20 @@
 package dungeonGenerator;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
 
-public class IntroWindow extends JPanel{  //First window of the application that requests dungeon information.
+public class IntroWindow extends JPanel {  //First window of the application that requests dungeon information.
 
     private JPanel panel;
     private JRadioButton small, medium, large;
     private JLabel partySizeL, mapSizeL;
     private JTextField partySize, mapSize;
-    private int roomNumber;
     private JButton nextButton;
 
-    private JLabel error;
+    private int roomNumber;
 
     IntroWindow() {
         panel = new JPanel(); //Set Layout to Box?
